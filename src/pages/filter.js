@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaBackward } from "react-icons/fa";
 import Filterform from "../components/filterform";
 
-const Filter = ({setisfilter}) => {
+const Filter = ({setisfilter,setLogs}) => {
   return (
     <section>
       <div className="grid grid-cols-1">
@@ -29,7 +29,7 @@ const Filter = ({setisfilter}) => {
               </Link>
             </p>
 
-            <Filterform />
+            <Filterform setisfilter={setisfilter} setLogs={setLogs} />
           </div>
         </div>
       </div>

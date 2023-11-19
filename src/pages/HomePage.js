@@ -38,7 +38,7 @@ const HomePage = () => {
       {
         isfilter &&
         (
-          <Filter setisfilter={setisfilter}/>
+          <Filter setisfilter={setisfilter} setLogs={setLogs}/>
         )
       }
         <section className="container px-4 mx-auto py-4">

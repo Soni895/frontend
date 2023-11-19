@@ -3,32 +3,34 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 
-const  Filterform= () => {
+const  Filterform= ({setisfilter,setLogs}) => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const createEmployee = async (data) => {
+  const GetLogs = async (data) => {
     console.log(data);
 
-    const savedUserResponse = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/getdata`,
-      {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data }),
-      }
-    );
+  
+      const getPeople = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/getlogs`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...data }),
+        }
+      );
 
-    console.log("FORM RESPONSE......", savedUserResponse);
-
-    navigate("/");
+      const res = await getPeople.json();
+      console.log(res);
+      setLogs(res)
+    setisfilter(false);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(createEmployee)} className="mt-8">
+      <form onSubmit={handleSubmit(GetLogs)} className="mt-8">
         <div className="space-y-5">
           
 
