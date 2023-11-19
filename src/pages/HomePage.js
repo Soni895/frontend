@@ -1,11 +1,13 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Filter from "./filter";
 
 const HomePage = () => {
 
   const data=["level","message","resourceId","commit","timestamp","traceId","spanId",];
     const [Logs, setLogs] = useState();
+    const [isfilter,setisfilter]= useState(false);
   
     const getAllData = async () => {
       try {
@@ -29,12 +31,17 @@ const HomePage = () => {
     useEffect(() => {
       getAllData();
     },[]);
-    console.log(Logs);
-  
-    // console.log(Logs);
+    
+
   
     return (
       <>
+      {
+        isfilter &&
+        (
+          <Filter setisfilter={setisfilter}/>
+        )
+      }
         <section className="container px-4 mx-auto py-4">
           <div className="flex items-center justify-between">
             <div>
@@ -45,13 +52,21 @@ const HomePage = () => {
               Log Ingestor and Query Interface
               </p>
             </div>
-            <Link to={"/addemployee"}>
-              <div>
+            {
+              !isfilter &&(
+                
+               
+              <div
+               onClick={()=>
+                {
+                  setisfilter((pev)=>!pev)
+                }}>
                 <button className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-semibold leading-7 text-white hover:bg-indigo-500 ">
                  Filter
                 </button>
               </div>
-            </Link>
+              )
+            }
           </div>
           <div className="flex flex-col mt-6">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -76,7 +91,7 @@ const HomePage = () => {
   
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                       {Logs?.response.map((Log) => (
-                        console.log(Log),
+                        
                         <tr key={Log?.level}>
 
                           <td className="py-4  whitespace-nowrap">

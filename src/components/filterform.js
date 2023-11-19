@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 
-const EmployeeForm = () => {
+const  Filterform= () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
@@ -147,4 +147,4 @@ const EmployeeForm = () => {
   );
 };
 
-export default EmployeeForm;
+export default Filterform;
