@@ -90,9 +90,9 @@ const HomePage = () => {
                     </thead>
   
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                      {Logs?.response.map((Log) => (
+                      {Logs?.response.map((Log,key) => (
                         
-                        <tr key={Log?.level}>
+                        <tr key={key}>
 
                           <td className="py-4  whitespace-nowrap">
                             <div className="flex items-center">
