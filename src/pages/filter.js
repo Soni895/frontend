@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaBackward } from "react-icons/fa";
 import Filterform from "../components/filterform";
 
-const Filter = ({setisfilter,setLogs}) => {
+const Filter = ({setisfilter,setLogs,getAllData}) => {
   return (
     <section>
       <div className="grid grid-cols-1">
@@ -21,11 +21,12 @@ const Filter = ({setisfilter,setLogs}) => {
                     
                     return !pevstate
                   })
+                  getAllData();
                 }}
                 className="font-medium text-indigo-600 transition-all duration-200 hover:text-indigo-700 hover:underline focus:text-indigo-700 flex items-center gap-3"
               >
                 <FaBackward />
-                Back to  List
+                Rest Log
               </Link>
             </p>
 
