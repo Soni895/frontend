@@ -18,7 +18,7 @@ const Filter = ({setisfilter}) => {
                 {
 
                   setisfilter((pevstate)=>{
-                    console.log(pevstate);
+                    
                     return !pevstate
                   })
                 }}
